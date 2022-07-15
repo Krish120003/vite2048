@@ -1,13 +1,21 @@
 import { useReducer, useEffect } from "preact/hooks";
 import { CellGrid, CellValue } from "./types";
-import { mergeLeftAndInsert, rotate, isGameOver, didWin } from "./logic";
+import {
+  mergeLeftAndInsert,
+  rotate,
+  isGameOver,
+  didWin,
+  addRandom,
+} from "./logic";
 
-const initialGrid: CellGrid = [
-  [2, 0, 2, 2],
-  [0, 0, 0, 0],
-  [0, 0, 2, 0],
-  [2, 2, 4, 8],
-];
+const initialGrid: CellGrid = addRandom(
+  addRandom([
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+  ])
+);
 
 interface GameState {
   grid: CellGrid;

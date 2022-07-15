@@ -10,7 +10,7 @@ export function rotate(grid: CellGrid): CellGrid {
  * @param {CellGrid} grid - CellGrid - The grid to add a random cell to
  * @returns A new grid with a random cell value of 2 or 4.
  */
-function addRandom(grid: CellGrid): CellGrid {
+export function addRandom(grid: CellGrid): CellGrid {
   let positions = [];
   for (let i = 0; i < grid.length; i++) {
     for (let j = 0; j < grid[0].length; j++) {
