@@ -23,6 +23,62 @@ interface GameState {
   over: boolean;
 }
 
+interface CellColors {
+  background: string;
+  text: string;
+}
+
+const colors = {
+  0: {
+    background: "rgb(42, 72, 163)",
+    text: "white",
+  },
+  2: {
+    background: "rgb(0, 146 , 250)",
+    text: "white",
+  },
+  4: {
+    background: "rgb(0, 170 , 250)",
+    text: "white",
+  },
+  8: {
+    background: "rgb(0, 129, 250)",
+    text: "",
+  },
+  16: {
+    background: "rgb(0, 92, 250)",
+    text: "",
+  },
+  32: {
+    background: "rgb(0, 8, 250)",
+    text: "",
+  },
+  64: {
+    background: "rgb(87, 0, 250)",
+    text: "",
+  },
+  128: {
+    background: "rgb(117, 0, 250)",
+    text: "",
+  },
+  256: {
+    background: "rgb(88, 16, 161)",
+    text: "",
+  },
+  512: {
+    background: "rgb(163, 3, 137)",
+    text: "",
+  },
+  1024: {
+    background: "rgb(163, 3, 86)",
+    text: "",
+  },
+  2048: {
+    background: "rgb(163, 3, 38)",
+    text: "",
+  },
+};
+
 function reducer(
   { grid, win, over }: GameState,
   { key: action }: { key: string }
@@ -70,13 +126,16 @@ export default function index(): JSX.Element {
   }, []);
 
   return (
-    <div class="bg-blue-300 p-6 aspect-square grid gap-4 grid-cols-4 grid-rows-4 rounded-xl">
+    <div class="bg-blue-900 p-6 aspect-square grid gap-4 grid-cols-4 grid-rows-4 rounded-xl">
       {state.grid.map((row: Array<CellValue>, id: number) => (
         <>
           {row.map((cellValue: CellValue, id2: number) => (
             <div
-              class="bg-blue-100 aspect-square w-[8rem] text-4xl font-black flex justify-center items-center rounded-md"
               key={id.toString() + id2.toString()}
+              class="bg-blue-100 aspect-square w-[8rem] text-6xl text-white font-black flex justify-center items-center rounded-md select-none"
+              style={{
+                background: colors[cellValue].background,
+              }}
             >
               <p>{cellValue === 0 ? "" : cellValue}</p>
             </div>
